@@ -1,0 +1,9 @@
+export const DARKMODE = 'DARKMODE';
+export const USD = 'USD'
+export const EURO = 'EURO'
+export const COMMISSION_ENABLED = 'COMMISSION_ENABLED';
+export const COMMISSION = 'COMMISSION';
+export const SELECTED_ELEMENT = 'SELECTED_ELEMENT';
+export const ELEMENTS = 'ELEMENTS';
+export const ELEMENT = 'ELEMENT';
+export const SELECTED_ELEMENT_PROPERTIES = 'SELECTED_ELEMENT_PROPERTIES'
