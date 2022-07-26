@@ -5,6 +5,8 @@ import { useRecoilValue, useSetRecoilState} from 'recoil'
 import { weatherRequestIdAtom } from '../store/atoms/weatherRequestIdAtom'
 import { userSelector } from '../store/selectors/userSelector'
 import { weatherState } from '../store/selectors/weatherState'
+import {ErrorBoundary, FallbackProps} from 'react-error-boundary'
+import { Button } from '@chakra-ui/react'
 
 const useRefetchWeather = (userId: number) => {
     const setRequestId = useSetRecoilState(weatherRequestIdAtom(userId))
@@ -46,6 +48,19 @@ export const UserData = ({userId}: {userId: number}) => {
     )
 }
 
+const ErrorFalback = ({error, resetErrorBoundary}: FallbackProps) => {
+    return (
+        <div>
+            <Heading as="h2" size="md" mb={1}>
+                Something went wrong :(
+            </Heading>
+            <Text>
+                {error.message}
+            </Text>
+            <Button onClick={resetErrorBoundary}>Ok</Button>
+        </div>
+    )
+}
 export const Async = () => {
     const [userId, setUserId] = useState<undefined | number>(undefined)
 
@@ -69,10 +84,16 @@ export const Async = () => {
                 <option value="1">User 1</option>
                 <option value="2">User 2</option>
                 <option value="3">User 3</option>
+                <option value="4">User 4</option>
             </Select>
-            <Suspense fallback={<div>Loading...</div>}>
-                {userId && <UserData userId={userId}/>}
-            </Suspense>
+            <ErrorBoundary FallbackComponent={ErrorFalback} onReset={() => {
+                setUserId(undefined)
+            }} resetKeys={[userId]}> 
+                <Suspense fallback={<div>Loading...</div>}>
+                    {userId && <UserData userId={userId}/>}
+                </Suspense>
+            </ErrorBoundary>
+            
             
         </Container>
     )

@@ -7,7 +7,7 @@ export const userSelector = selectorFamily({
 
         const userData = await fetch(`https://jsonplaceholder.typicode.com/users/${userId}`)
                                 .then(res => res.json())
-
+        if (userId === 4) throw new Error ('user does not exist')
         return userData
     }
 })
