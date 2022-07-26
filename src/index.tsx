@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import ReactDOM from 'react-dom'
 import './index.css'
 import Canvas from './Canvas'
@@ -8,6 +8,7 @@ import { RecoilRoot } from 'recoil'
 import { Atoms } from './examples/Atoms'
 import { Selectors } from './examples/Selectors'
 import { DebugButton } from './components/DebugButton/DebugButton'
+import { Async } from './examples/Async'
 
 ReactDOM.render(
     <React.StrictMode>
@@ -16,10 +17,16 @@ ReactDOM.render(
                 <Router>
                     <Switch>
                         <Route path="/examples/atoms">
+                            <DebugButton />
                             <Atoms />
                         </Route>
                         <Route path="/examples/selectors">
+                            <DebugButton />
                             <Selectors />
+                        </Route>
+                        <Route path="/examples/async">
+                            <DebugButton />
+                            <Async />
                         </Route>
                         <Route>
                             <Canvas />
