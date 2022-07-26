@@ -9,4 +9,5 @@ export const ELEMENT = 'ELEMENT';
 export const EDIT_PROPERTY = 'EDIT_PROPERTY';
 export const USER = 'USER';
 export const WEATHER = 'WEATHER';
-export const WEATHER_REQUEST_ID = 'WEATHER_REQUEST_ID'
+export const WEATHER_REQUEST_ID = 'WEATHER_REQUEST_ID';
+export const IMAGE_SIZE = 'IMAGE_SIZE';

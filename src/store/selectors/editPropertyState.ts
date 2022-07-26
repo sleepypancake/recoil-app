@@ -4,7 +4,7 @@ import { EDIT_PROPERTY } from "../keys";
 import { get as lodashGet, set as lodashSet } from "lodash";
 import produce from "immer";
 
-export const editPropertyState = selectorFamily<number, {path: string, id: number}> ({
+export const editPropertyState = selectorFamily<any, {path: string, id: number}> ({
     key: EDIT_PROPERTY,
     get: ({path, id}) => ({get}) => {
         const element = get(elementAtom(id))

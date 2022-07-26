@@ -3,4 +3,8 @@ export type ElementStyle = {
     size: {width: number; height: number}
 }
 
-export type Element = {style: ElementStyle}
+export type Element = {
+    style: ElementStyle,
+    image?: {id: number, src: string}
+}
+
